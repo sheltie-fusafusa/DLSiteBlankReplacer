@@ -1,0 +1,2 @@
+# DLSiteBlankReplacer
+DLSiteの例の伏せ字を再現するChrome拡張
