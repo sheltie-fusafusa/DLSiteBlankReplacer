@@ -1,0 +1,14 @@
+{
+    "name": "DLSiteReplacer",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "DLSite内の特定の文字を置き換えます",
+    "permissions": [],
+    "content_scripts": [{
+      "matches": ["https://www.dlsite.com/*"],
+      "exclude_matches": ["https://www.dlsite.com/*/cart"],
+      "js": [
+        "content.js"
+      ]
+    }]
+}
