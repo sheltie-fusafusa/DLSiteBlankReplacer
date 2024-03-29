@@ -1,8 +1,3 @@
-// content.js
-
-// ページのHTMLを取得
-var pageHTML = document.body.innerHTML;
-
 // テキストの置換ルール
 var rules = [
     {pattern: /メスガキ/g, replacement: "ざぁ～こ♡"},
@@ -32,10 +27,13 @@ var rules = [
   // 他の置換ルールを追加
 ];
 
-// 各ルールに従ってテキストを置換
-rules.forEach(function(rule) {
-  pageHTML = pageHTML.replace(rule.pattern, rule.replacement);
-});
-
-// 置換されたHTMLをページに適用
-document.body.innerHTML = pageHTML;
+const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+  
+let node;
+while (node = walker.nextNode()) {
+  let text = node.nodeValue;
+  rules.forEach(rule => {
+    text = text.replace(rule.pattern, rule.replacement);
+  });
+  node.nodeValue = text;
+}
